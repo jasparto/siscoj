@@ -14,6 +14,7 @@ import com.oasys.entity.UtilLog;
 import com.oasys.entity.UtilMSG;
 import com.oasys.publico.controlador.GestorEstablecimiento;
 import com.oasys.publico.controlador.GestorMunicipios;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -21,6 +22,8 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import org.primefaces.event.FileUploadEvent;
+import sun.misc.BASE64Encoder;
 
 /**
  *
@@ -50,6 +53,16 @@ public class UIEstablecimiento implements Serializable {
     public void subirItemEstablecimiento() {
         establecimiento = (Establecimiento) UtilJSF.getBean("varEstablecimiento");
         establecimientoList.remove(establecimiento);
+    }
+    
+    public void cargarLogo(FileUploadEvent event) throws IOException {
+        try {
+//            System.out.println("cargando imagen " + event.getFile().getFileName());
+            String base64 = new BASE64Encoder().encode(event.getFile().getContents());
+            establecimiento.setLogo(base64);
+        } catch (Exception ex) {
+            UtilLog.generarLog(this.getClass(), ex);
+        }
     }
 
     public void guardarEstablecimiento() {

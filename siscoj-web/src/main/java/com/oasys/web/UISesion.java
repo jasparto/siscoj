@@ -5,8 +5,6 @@
  */
 package com.oasys.web;
 
-
-
 import com.oasys.entity.Dialogo;
 import com.oasys.entity.UtilJSF;
 import javax.faces.bean.ManagedBean;
@@ -14,7 +12,6 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
-
 
 /**
  *
@@ -25,11 +22,10 @@ import javax.servlet.http.HttpSession;
 
 public class UISesion {
 
-
-
     public String cerrarSesion() {
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         ((HttpSession) externalContext.getSession(true)).invalidate();
+        externalContext.invalidateSession();
         return ("/ingreso.xhtml?faces-redirect=true");
     }
 
@@ -53,7 +49,7 @@ public class UISesion {
         return true;
 //        return ((Sesion) UtilJSF.getBean("sesion")).getPermisos().get(UtilBinario.PERMISO_CREAR);
     }
-    
+
     public boolean isCancelarActivo() {
         return true;
     }

@@ -18,6 +18,14 @@ body {
     background-color: #ffffff;
 }
 
+.letraBlueBackgroundWhite{
+    font-family: Helvetica;
+    font-size: 14px;
+    background-color: #ffffff;
+    font-weight: 900;
+    color: #0078ae;
+}
+
 .letraBlanca{
     font-weight: bold;
     font-family: Helvetica;
@@ -83,13 +91,20 @@ body {
 }
 
 .Centro {
-    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-family: Verdana, Arial, Helvetica, sans-serif;    
     font-size: small;
-    text-align: center;
+    text-align: center;        
 }
 
 .letra-xx-small {
     font-size:xx-small;
+}
+
+
+.letra-x-small-centro {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size:x-small;
+    text-align: center;
 }
 
 .letra-xx-small-centro {
@@ -231,7 +246,13 @@ root {
 }
 
 
+.itemEnabled {
+    font-family:monospace;
+}
 
+.itemDisabled {
+    font-family:monospace;
+}
 
 
 

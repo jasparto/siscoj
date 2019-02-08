@@ -60,6 +60,8 @@ public class Establecimiento implements Serializable, Cloneable {
     private Municipios municipios;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "establecimiento")
     private List<RelUsuariosEstablecimiento> relUsuariosEstablecimientoList;
+    
+    private String logo;
 
     public Establecimiento() {
     }
@@ -205,6 +207,20 @@ public class Establecimiento implements Serializable, Cloneable {
     @Override
     public Object clone() throws CloneNotSupportedException {
         return super.clone(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     * @return the logo
+     */
+    public String getLogo() {
+        return logo;
+    }
+
+    /**
+     * @param logo the logo to set
+     */
+    public void setLogo(String logo) {
+        this.logo = logo;
     }
     
     
