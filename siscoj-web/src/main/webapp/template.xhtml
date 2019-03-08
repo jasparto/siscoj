@@ -8,6 +8,7 @@
 
     <h:head>         
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+        <link href="https://fonts.googleapis.com/css?family=Sonsie+One" rel="stylesheet"/>
         <title>Gestor</title>
     </h:head>
 
@@ -54,7 +55,7 @@
                 <h:form>
                     <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
                     <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
-                        <p:graphicImage value="/imagenes/loader.gif" />
+                        <p:graphicImage value="/resources/imagenes/loader.gif" />
                     </p:dialog>
                 </h:form>
                 <div id="content" align="center">

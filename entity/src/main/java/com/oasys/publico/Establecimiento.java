@@ -5,6 +5,8 @@
  */
 package com.oasys.publico;
 
+import com.oasys.contable.Moneda;
+import com.oasys.contable.Representantes;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -42,6 +44,7 @@ public class Establecimiento implements Serializable, Cloneable {
     @Basic(optional = false)
     @Column(name = "nit")
     private String nit;
+    private String dv;
     @Column(name = "direccion")
     private String direccion;
     @Column(name = "telefono")
@@ -61,7 +64,10 @@ public class Establecimiento implements Serializable, Cloneable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "establecimiento")
     private List<RelUsuariosEstablecimiento> relUsuariosEstablecimientoList;
     
+    private Representantes representantes = new Representantes();
+
     private String logo;
+    private Moneda moneda;
 
     public Establecimiento() {
     }
@@ -75,16 +81,16 @@ public class Establecimiento implements Serializable, Cloneable {
         this.nombre = nombre;
     }
 
-    public Establecimiento(Integer codigoEstablecimiento, String nombre, String nit, String direccion, String telefono, String correo) {
+    public Establecimiento(Integer codigoEstablecimiento, String nombre, String nit, String direccion, String telefono, String correo, String dv, Moneda moneda) {
         this.codigoEstablecimiento = codigoEstablecimiento;
         this.nombre = nombre;
         this.nit = nit;
         this.direccion = direccion;
         this.telefono = telefono;
         this.correo = correo;
+        this.dv = dv;
+        this.moneda = moneda;
     }
-    
-    
 
     public Establecimiento(int codigoEstablecimiento, String nit, Date fechaCierreDiario, String tipoEstablecimiento) {
         this.codigoEstablecimiento = codigoEstablecimiento;
@@ -222,7 +228,47 @@ public class Establecimiento implements Serializable, Cloneable {
     public void setLogo(String logo) {
         this.logo = logo;
     }
-    
-    
+
+    /**
+     * @return the dv
+     */
+    public String getDv() {
+        return dv;
+    }
+
+    /**
+     * @param dv the dv to set
+     */
+    public void setDv(String dv) {
+        this.dv = dv;
+    }
+
+    /**
+     * @return the moneda
+     */
+    public Moneda getMoneda() {
+        return moneda;
+    }
+
+    /**
+     * @param moneda the moneda to set
+     */
+    public void setMoneda(Moneda moneda) {
+        this.moneda = moneda;
+    }
+
+    /**
+     * @return the representantes
+     */
+    public Representantes getRepresentantes() {
+        return representantes;
+    }
+
+    /**
+     * @param representantes the representantes to set
+     */
+    public void setRepresentantes(Representantes representantes) {
+        this.representantes = representantes;
+    }
 
 }

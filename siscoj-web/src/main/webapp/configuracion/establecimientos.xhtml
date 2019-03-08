@@ -17,36 +17,53 @@
                             <p:column colspan="7"><h1>#{not empty uiEstablecimiento.establecimiento.codigoEstablecimiento?'Modificar Empresa':'Crear Empresa'}</h1></p:column>
                         </p:row>
                         <p:row>
+                            <p:column>Tipo de Identificación</p:column>
+                            <p:column>Identificación</p:column>
+                            <p:column>Tipo de Persona</p:column>
                             <p:column>Nombre</p:column>
-                            <p:column>Municipio</p:column>
-                            <p:column>Nit</p:column>
                         </p:row>
                     </f:facet>
                     <p:row>
                         <p:column>
-                            <p:inputText value="#{uiEstablecimiento.establecimiento.nombre}" placeholder="Nombre Establecimiento"/>
-                        </p:column>
-                        <p:column>
-                            <p:selectOneMenu id="somItemsMunicipios" value="#{uiEstablecimiento.establecimiento.municipios}" converter="convertidorGenerico"
-                                             style="text-align: center;width: 180px;">  
-                                <f:selectItems value="#{uiEstablecimiento.municipiosList}" var="muni" itemLabel="#{muni.nombre}" itemValue="#{muni}"/>
+                            <p:selectOneMenu value="#{uiEstablecimiento.establecimiento.representantes.tiposIdentificacion}" converter="convertidorGenerico"
+                                             style="text-align: center;width: 250px;">  
+                                <f:selectItems value="#{uiEstablecimiento.tiposIdentificacionList}" var="ti" itemLabel="#{ti.nombre}" itemValue="#{ti}"/>
                             </p:selectOneMenu>
                         </p:column>
                         <p:column>
-                            <p:inputText value="#{uiEstablecimiento.establecimiento.nit}" placeholder="Nit"/>
+                            <p:inputText value="#{uiEstablecimiento.establecimiento.nit}" placeholder="Identficación"/>
+                            <p:spacer/>
+                            <p:inputText value="#{uiEstablecimiento.establecimiento.dv}" placeholder="DV" style="width: 17px;"/>
                         </p:column>
+                        <p:column>
+                            <p:selectOneMenu value="#{uiEstablecimiento.establecimiento.representantes.tiposPersona}" converter="convertidorGenerico"
+                                             style="text-align: center;width: 180px;">  
+                                <f:selectItems value="#{uiEstablecimiento.tiposPersonaList}" var="tp" itemLabel="#{tp.nombre}" itemValue="#{tp}"/>
+                            </p:selectOneMenu>
+                        </p:column>
+                        <p:column>
+                            <p:inputText value="#{uiEstablecimiento.establecimiento.nombre}" placeholder="Nombre Establecimiento" style="width: 250px;"/>
+                        </p:column>
+
                     </p:row>
                 </p:panelGrid>
                 <br/>
                 <p:panelGrid>
                     <f:facet name="header">
                         <p:row>
+                            <p:column>Municipio</p:column>
                             <p:column>Dirección</p:column>
                             <p:column>Telefono</p:column>
                             <p:column>Correo</p:column>
                         </p:row>
                     </f:facet>
                     <p:row>
+                        <p:column>
+                            <p:selectOneMenu id="somItemsMunicipios" value="#{uiEstablecimiento.establecimiento.municipios}" converter="convertidorGenerico"
+                                             style="text-align: center;width: 180px;">  
+                                <f:selectItems value="#{uiEstablecimiento.municipiosList}" var="muni" itemLabel="#{muni.nombre}" itemValue="#{muni}"/>
+                            </p:selectOneMenu>
+                        </p:column>
                         <p:column>
                             <p:inputText value="#{uiEstablecimiento.establecimiento.direccion}" placeholder="Dirección"/>
                         </p:column>
@@ -55,6 +72,29 @@
                         </p:column>
                         <p:column>
                             <p:inputText value="#{uiEstablecimiento.establecimiento.correo}" placeholder="Correo"/>
+                        </p:column>
+                    </p:row> 
+                </p:panelGrid>
+                <br/>
+                <p:panelGrid>
+                    <f:facet name="header">
+                        <p:row>
+                            <p:column>Regimen</p:column>
+                            <p:column>Moneda</p:column>
+                        </p:row>
+                    </f:facet>
+                    <p:row>
+                        <p:column>
+                            <p:selectOneMenu value="#{uiEstablecimiento.establecimiento.representantes.regimen}" converter="convertidorGenerico"
+                                             style="text-align: center;width: 250px;">  
+                                <f:selectItems value="#{uiEstablecimiento.regimenList}" var="r" itemLabel="#{r.nombre}" itemValue="#{r}"/>
+                            </p:selectOneMenu>
+                        </p:column>
+                        <p:column>
+                            <p:selectOneMenu value="#{uiEstablecimiento.establecimiento.moneda}" converter="convertidorGenerico"
+                                             style="text-align: center;width: 250px;">  
+                                <f:selectItems value="#{uiEstablecimiento.monedaList}" var="m" itemLabel="#{m.nombre}" itemValue="#{m}"/>
+                            </p:selectOneMenu>
                         </p:column>
                     </p:row> 
                 </p:panelGrid>
@@ -84,7 +124,7 @@
                 <br/>
                 <h:panelGrid columns="2">
                     <p:commandButton value="Crear / Modificar" action="#{uiEstablecimiento.guardarEstablecimiento()}"
-                                     icon="ui-icon-disk"
+                                     icon="ui-icon-drequest.getContentDescription()isk"
                                      update="formEstablecimientos">                        
 
                     </p:commandButton>

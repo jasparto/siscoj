@@ -5,6 +5,7 @@
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Gestor</title>
+        <link href="https://fonts.googleapis.com/css?family=Sonsie+One|Boogaloo" rel="stylesheet"/>
     </h:head>
     <h:body id="body" style="background-color:  #F9F9F9"> 
         <div class="body-header"/>
@@ -13,7 +14,7 @@
         <h:outputStylesheet library="css" name="global.css"/> 
         <div >
             <div align="left" >
-                <h:form id="formulario"  >
+                <h:form id="formulario">
                     <tr>
                         <td>
                             <p:panel style="background:#8F0000; width: 50%; border-color: black; height:2px; 
@@ -22,17 +23,13 @@
 
                             <p:panel style="width: 50%; background:#fff;border-color: black; margin-top: 1px; 
                                      margin-left: 20%; font-size: 12px; text-align: center;"  >
-                                <h1 style="color: black">SISCOJ</h1>
                                 <p:messages id="messages" showDetail="true" autoUpdate="true"/>
-
-                                <p:focus context="grid"/>
-                                <p:spacer height="40"/>
-
+                                <h1 class="titulo">SISCOJ</h1>
                                 <p:focus  for="inTxtUsuario"/>
                                 <h:panelGrid id="grid" style="margin: auto auto;" columns="1" cellpadding="10" >
-                                    <p:spacer height="10"/>
+                                    
                                     <p:inputText id="inTxtUsuario" value="#{uiUsuario.usuario}"
-                                                 placeholder="Usuario"
+                                                 placeholder="Usuario" styleClass="inputText"
                                                  style="width: 200px; border-radius: 2px;">
                                     </p:inputText>
 
@@ -41,13 +38,13 @@
                                                 goodLabel="Segura" strongLabel="Segura" style="width: 200px; border-radius: 2px;"/>
 
                                     <p:commandButton value="Ingresar" style="margin: auto auto;width: 210px;height: 40px;" 
+                                                     styleClass="boton"
                                                      action="#{uiUsuario.validarUsuario()}"/>
 
                                     <p:spacer height="10"/>
                                 </h:panelGrid>
-                                <p:spacer height="40"/>
                                 <div align="left">
-                                    <p:outputLabel value="18.8.1.4" styleClass="letraBlanca" style="font-family: Open Sans; font-weight: 900;"/>
+                                    <p:outputLabel value="19.1.1.0" styleClass="titulo" style="font-size: 10px;" />
                                 </div>
                             </p:panel> 
 

@@ -7,6 +7,8 @@ package com.oasys.publico.controlador;
 
 
 
+import com.oasys.contable.Representantes;
+import com.oasys.contable.dao.RepresentantesDAO;
 import com.oasys.controller.Gestor;
 import com.oasys.entity.UtilLog;
 import com.oasys.publico.Establecimiento;
@@ -57,12 +59,19 @@ public class GestorEstablecimiento extends Gestor {
     }
 
     public void validarEstablecimiento(Establecimiento establecimiento) throws Exception {
-        if (establecimiento == null || establecimiento.getNombre() == null || establecimiento.getNombre().equalsIgnoreCase("")) {
-            throw new Exception("Ingresa el nombre del establecimiento.", UtilLog.TW_VALIDACION);
+        if (establecimiento == null || establecimiento.getRepresentantes() == null) {
+            throw new Exception("Valide los campos requeridos y ejecute el proceso nuevamente.", UtilLog.TW_VALIDACION);
         }
         if (establecimiento.getNit() == null || establecimiento.getNit().equalsIgnoreCase("")) {
             throw new Exception("Ingresa el nit del establecimiento.", UtilLog.TW_VALIDACION);
         }
+        if (establecimiento.getDv() == null || establecimiento.getNit().equalsIgnoreCase("")) {
+            throw new Exception("Ingresa el digito de verificación (DV) del establecimiento.", UtilLog.TW_VALIDACION);
+        }
+        if (establecimiento.getNombre() == null || establecimiento.getNombre().equalsIgnoreCase("")) {
+            throw new Exception("Ingresa el nombre del establecimiento.", UtilLog.TW_VALIDACION);
+        }
+        
         if (establecimiento.getDireccion() == null || establecimiento.getDireccion().equalsIgnoreCase("")) {
             throw new Exception("Ingresa la dirección del establecimiento.", UtilLog.TW_VALIDACION);
         }
@@ -84,7 +93,9 @@ public class GestorEstablecimiento extends Gestor {
             this.abrirConexion();
             this.inicioTransaccion();
             EstablecimientoDAO establecimientoDAO = new EstablecimientoDAO(conexion);
+            RepresentantesDAO representantesDAO = new RepresentantesDAO(conexion);
             establecimientoDAO.insertarEstablecimiento(establecimiento);
+            representantesDAO.insertarRepresentantes(establecimiento.getRepresentantes());
             this.finTransaccion();
         } finally {
             this.cerrarConexion();
