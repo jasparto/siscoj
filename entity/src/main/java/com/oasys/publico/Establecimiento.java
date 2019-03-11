@@ -63,7 +63,7 @@ public class Establecimiento implements Serializable, Cloneable {
     private Municipios municipios;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "establecimiento")
     private List<RelUsuariosEstablecimiento> relUsuariosEstablecimientoList;
-    
+
     private Representantes representantes = new Representantes();
 
     private String logo;
@@ -81,7 +81,7 @@ public class Establecimiento implements Serializable, Cloneable {
         this.nombre = nombre;
     }
 
-    public Establecimiento(Integer codigoEstablecimiento, String nombre, String nit, String direccion, String telefono, String correo, String dv, Moneda moneda) {
+    public Establecimiento(Integer codigoEstablecimiento, String nombre, String nit, String direccion, String telefono, String correo, String dv, Moneda moneda, String logo) {
         this.codigoEstablecimiento = codigoEstablecimiento;
         this.nombre = nombre;
         this.nit = nit;
@@ -90,6 +90,7 @@ public class Establecimiento implements Serializable, Cloneable {
         this.correo = correo;
         this.dv = dv;
         this.moneda = moneda;
+        this.logo = logo;
     }
 
     public Establecimiento(int codigoEstablecimiento, String nit, Date fechaCierreDiario, String tipoEstablecimiento) {

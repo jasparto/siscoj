@@ -93,7 +93,8 @@ public class UIEstablecimiento implements Serializable {
                     e.getRepresentantes().getRegimen().getCodRegimen(), e.getRepresentantes().getTiposIdentificacion().getTipoIdentificacion(),
                     e.getRepresentantes().getTiposPersona().getTipoPersona())
             );
-            
+            e.getRepresentantes().setNombre(e.getNombre());
+            e.getRepresentantes().setActivo(Boolean.TRUE);
             gestorEstablecimiento.almacenarEstablecimiento(e);
 
             UtilMSG.addSuccessMsg("Empresa almacenada correctamente.");

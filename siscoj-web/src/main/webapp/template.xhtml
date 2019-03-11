@@ -38,10 +38,16 @@
                 <h:form id="menu" style="font-size: 12px;">
                     <ui:include src="/inicio/menu.xhtml"/>
                     <div align="right">
-                        <p:panelGrid columns="2">
-                            <span class="ui-icon ui-icon-person" />
-                            <p:outputLabel value="#{sesion.usuarios.nombre} #{sesion.usuarios.apellido}" styleClass="letra"/>
-                        </p:panelGrid>
+                        <right>
+                            <p:panelGrid columns="2">
+
+                                <center><span class="ui-icon ui-icon-person" /></center>
+                                <p:outputLabel value="#{sesion.usuarios.nombre} #{sesion.usuarios.apellido}" styleClass="letra"/>
+                                <img src="data:image/jpg;base64,#{sesion.establecimiento.logo}" width="50px;"/>
+                                <p:outputLabel value="#{sesion.establecimiento.nombre}" styleClass="letra"/>
+
+                            </p:panelGrid>  
+                        </right>
                     </div>
                     <div>
                         <p:messages id="messagesUp" showDetail="true" closable="true" showSummary="false">

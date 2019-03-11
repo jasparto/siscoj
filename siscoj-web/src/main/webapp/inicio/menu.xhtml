@@ -95,6 +95,7 @@
 
 
     <p:megaMenu orientation="Horizontal" style="margin-top:20px" >
+        <p:menuitem  icon="ui-icon-home"  action="/inicio/principal.xhtml" style="margin-left: 10px;"/>
         <p:submenu label="Configuracion" icon="ui-icon-check" style="margin-left: 2%">
             <p:column>
                 <p:submenu label="Configuración">
@@ -105,17 +106,15 @@
                 </p:submenu>
             </p:column>
         </p:submenu>
-        <p:submenu label="Estandares" icon="ui-icon-pencil" style="margin-left: 2%">
+        <p:submenu label="Facturación" icon="ui-icon-pencil" style="margin-left: 2%">
             <p:column>
-                <p:submenu label="Evaluación" >
-                    <p:menuitem  value="Autoevaluación Estandares Mín."  style="font-size: 11px;"
+                <p:submenu label="Configuración" >
+                    <p:menuitem  value="Administrar Terceros"  style="font-size: 11px;"
                                  action="/gestor/evaluaciones.xhtml"/>
-                    <p:menuitem  value="Resumen Autoevaluación"  style="font-size: 11px;"/>
+                    <p:menuitem  value="Administrar Item Venta"  style="font-size: 11px;"/>
                 </p:submenu>
-                <p:submenu label="Análisis" >
-                    <p:menuitem  value="Capacitaciones General"  style="font-size: 11px;"/>
-                    <p:menuitem  value="Informe Gráfica"  style="font-size: 11px;"/>
-                    <p:menuitem  value="Gráfica Comparativa"  style="font-size: 11px;"/>
+                <p:submenu label="Ventas" >
+                    <p:menuitem  value="Registrar Venta"  style="font-size: 11px;"/>
                 </p:submenu>
             </p:column>
         </p:submenu>

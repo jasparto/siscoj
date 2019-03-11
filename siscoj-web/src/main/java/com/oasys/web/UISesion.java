@@ -7,6 +7,9 @@ package com.oasys.web;
 
 import com.oasys.entity.Dialogo;
 import com.oasys.entity.UtilJSF;
+import com.oasys.entity.UtilLog;
+import com.oasys.publico.Establecimiento;
+import com.oasys.siscoj.web.Sesion;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
@@ -31,6 +34,17 @@ public class UISesion {
 
     public void limpiarDialogo() {
         UtilJSF.setBean("dialogo", new Dialogo(), UtilJSF.SESSION_SCOPE);
+    }
+
+    public void cambiarEstablecimiento() {
+        try {
+            Sesion s = (Sesion) UtilJSF.getBean("sesion");
+            Establecimiento e = (Establecimiento) UtilJSF.getBean("varEstablecimiento");
+            s.setEstablecimiento(e);
+            UtilJSF.setBean("sesion", s, UtilJSF.SESSION_SCOPE);
+        } catch (Exception e) {
+            UtilLog.generarLog(this.getClass(), e);
+        }
     }
 
     /**

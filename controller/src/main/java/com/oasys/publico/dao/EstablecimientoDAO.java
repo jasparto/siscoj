@@ -39,7 +39,7 @@ public class EstablecimientoDAO {
             consulta = new Consulta(this.conexion);
             StringBuilder sql = new StringBuilder(
                     "SELECT codigo_establecimiento, codigo_municipio, nombre, nit, direccion, "
-                    + " telefono, correo, dv, cod_moneda"
+                    + " telefono, correo, dv, cod_moneda, logo"
                     + " FROM establecimiento"
                     + " WHERE codigo_establecimiento=" + codigo
             );
@@ -49,6 +49,7 @@ public class EstablecimientoDAO {
                 establecimiento.setNombre(rs.getString("nombre"));
                 establecimiento.setDv(rs.getString("dv"));
                 establecimiento.setMoneda(new Moneda(rs.getString("cod_moneda")));
+                establecimiento.setLogo(rs.getString("logo"));
             }
             return establecimiento;
         } finally {
@@ -153,7 +154,7 @@ public class EstablecimientoDAO {
         try {
             consulta = new Consulta(this.conexion);
             StringBuilder sql = new StringBuilder(
-                    "SELECT E.codigo_establecimiento, E.nombre, E.nit, E.direccion, E.telefono, E.correo, E.fecha_cierre_diario, E.cod_moneda, E.dv"
+                    "SELECT E.codigo_establecimiento, E.nombre, E.nit, E.direccion, E.telefono, E.correo, E.fecha_cierre_diario, E.cod_moneda, E.dv, E.logo"
                     + " FROM rel_usuarios_establecimiento"
                     + " JOIN establecimiento E USING (codigo_establecimiento)"
                     + " WHERE documento_usuario='" + documentoUsuario + "'"
@@ -161,7 +162,7 @@ public class EstablecimientoDAO {
             rs = consulta.ejecutar(sql);
             while (rs.next()) {
                 listaEstablecimientos.add(new Establecimiento(rs.getInt("codigo_establecimiento"), rs.getString("nombre"), rs.getString("nit"), rs.getString("direccion"), rs.getString("telefono"), rs.getString("correo"),
-                        rs.getString("dv"), new Moneda(rs.getString("cod_moneda"))));
+                        rs.getString("dv"), new Moneda(rs.getString("cod_moneda")), rs.getString("logo")));
             }
             return listaEstablecimientos;
         } finally {

@@ -3,13 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.oasys.web;
+package com.oasys.contable;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author juliano
  */
-public class UI {
+
+@ManagedBean(name = "uiTerceros")
+@SessionScoped
+public class UITerceros {
 
     public static final String COMPONENTES_REFRESCAR = "";
 

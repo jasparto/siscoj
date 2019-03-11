@@ -33,7 +33,8 @@ public class RepresentantesDAO {
                     + " VALUES (" + r.getRepresentantesPK().getCodigoEstablecimiento() + ", '" + r.getRepresentantesPK().getIdentificacion() + "', '" + r.getNombre() + "', '" + r.getRepresentantesPK().getCodRegimen() + "',"
                     + " '" + r.getRepresentantesPK().getTipoIdentificacion() + "', '" + r.getRepresentantesPK().getTipoPersona() + "', " + r.getActivo() + ", NOW())"
                     + " ON CONFLICT (codigo_establecimiento, identificacion, cod_regimen, tipo_identificacion, tipo_persona)"
-                    + " DO NOTHING;"
+                    + " DO UPDATE SET nombre=EXCLUDED.nombre, cod_regimen=EXCLUDED.cod_regimen, tipo_identificacion=EXCLUDED.tipo_identificacion,"
+                    + " tipo_persona=EXCLUDED.tipo_persona, activo=EXCLUDED.activo;"
             );
             consulta.actualizar(sql);
         } finally {
