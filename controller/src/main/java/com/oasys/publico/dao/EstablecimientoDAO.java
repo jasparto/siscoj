@@ -109,8 +109,8 @@ public class EstablecimientoDAO {
             consulta = new Consulta(this.conexion);
             StringBuilder sql = new StringBuilder(
                     "SELECT E.codigo_establecimiento, E.codigo_municipio, E.nombre, E.nit, E.dv, E.direccion, "
-                    + " E.telefono, E.correo, M.nombre AS nom_municipio, E.logo"
-                    + " R.identificacion, R.nombre, R.cod_regimen, "
+                    + " E.telefono, E.correo, M.nombre AS nom_municipio, E.logo,"
+                    + " R.identificacion, R.nombre AS r_nombre, R.cod_regimen,"
                     + " R.tipo_identificacion, R.tipo_persona, R.activo, R.fecha_registro"
                     + " FROM establecimiento E"
                     + " JOIN municipios M USING (codigo_municipio)"

@@ -11,7 +11,7 @@
     <ui:define name="content">
         <h:form enctype="multipart/form-data" id="formEstablecimientos" style="font-size: small;">
             <p:panel id="panelEstablecimientos"  header="Administrar Establecimientos">
-                <p:panelGrid>
+                <p:panelGrid id="pgDatos1">
                     <f:facet name="header">
                         <p:row>
                             <p:column colspan="7"><h1>#{not empty uiEstablecimiento.establecimiento.codigoEstablecimiento?'Modificar Empresa':'Crear Empresa'}</h1></p:column>
@@ -31,9 +31,14 @@
                             </p:selectOneMenu>
                         </p:column>
                         <p:column>
-                            <p:inputText value="#{uiEstablecimiento.establecimiento.nit}" placeholder="Identficación"/>
+                            <p:inputText value="#{uiEstablecimiento.establecimiento.nit}" placeholder="Identficación"
+                                         readonly="#{not empty uiEstablecimiento.establecimiento.codigoEstablecimiento}">
+                                <p:keyFilter mask="pint"/>
+                            </p:inputText>
                             <p:spacer/>
-                            <p:inputText value="#{uiEstablecimiento.establecimiento.dv}" placeholder="DV" style="width: 17px;"/>
+                            <p:inputText value="#{uiEstablecimiento.establecimiento.dv}" placeholder="dv" style="width: 17px; text-align: center">
+                                <p:keyFilter mask="pint"/>
+                            </p:inputText>
                         </p:column>
                         <p:column>
                             <p:selectOneMenu value="#{uiEstablecimiento.establecimiento.representantes.tiposPersona}" converter="convertidorGenerico"
@@ -42,13 +47,16 @@
                             </p:selectOneMenu>
                         </p:column>
                         <p:column>
-                            <p:inputText value="#{uiEstablecimiento.establecimiento.nombre}" placeholder="Nombre Establecimiento" style="width: 250px;"/>
+                            <p:inputText value="#{uiEstablecimiento.establecimiento.nombre}" placeholder="Nombre Establecimiento" 
+                                         style="width: 250px;">
+                                <p:ajax event="blur" process="pgDatos1"/>
+                            </p:inputText>
                         </p:column>
 
                     </p:row>
                 </p:panelGrid>
                 <br/>
-                <p:panelGrid>
+                <p:panelGrid id="pgDatos2">
                     <f:facet name="header">
                         <p:row>
                             <p:column>Municipio</p:column>
@@ -68,10 +76,14 @@
                             <p:inputText value="#{uiEstablecimiento.establecimiento.direccion}" placeholder="Dirección"/>
                         </p:column>
                         <p:column>
-                            <p:inputText value="#{uiEstablecimiento.establecimiento.telefono}" placeholder="Telefono"/>
+                            <p:inputText value="#{uiEstablecimiento.establecimiento.telefono}" placeholder="Telefono">
+                                <p:keyFilter mask="pint"/>
+                            </p:inputText>
                         </p:column>
                         <p:column>
-                            <p:inputText value="#{uiEstablecimiento.establecimiento.correo}" placeholder="Correo"/>
+                            <p:inputText value="#{uiEstablecimiento.establecimiento.correo}" placeholder="Correo">
+                                <p:ajax event="blur" process="pgDatos2"/>
+                            </p:inputText>
                         </p:column>
                     </p:row> 
                 </p:panelGrid>
@@ -99,23 +111,20 @@
                     </p:row> 
                 </p:panelGrid>
                 <br/>
-                <p:panelGrid>
+                <p:panelGrid id="pgLogo">
                     <f:facet name="header">
                         <p:row>
-                            <p:column>Cargar Logo</p:column>
-                            <p:column>Logo Actual</p:column>
+                            <p:column>Logo</p:column>
                         </p:row>
                     </f:facet>
                     <p:row>
                         <p:column>
-                            <p:fileUpload mode="advanced" fileUploadListener="#{uiEstablecimiento.cargarLogo}" update="panelEstablecimientos"
+                            <p:fileUpload mode="advanced" fileUploadListener="#{uiEstablecimiento.cargarLogo}" update="pgLogo" process=""
                                           label="Logo Empresa"  skinSimple="true" auto="true"/>
-                        </p:column>
-                        <p:column>
                             <h:panelGroup rendered="#{not empty uiEstablecimiento.establecimiento.logo}">
                                 <center>
                                     <img src="data:image/jpg;base64,#{uiEstablecimiento.establecimiento.logo}"
-                                         width="30%"/>
+                                         width="40%"/>
                                 </center>
                             </h:panelGroup>
                         </p:column>

@@ -7,19 +7,19 @@ package com.oasys.publico.controlador;
 
 
 
-import com.oasys.contable.Representantes;
 import com.oasys.contable.dao.RepresentantesDAO;
 import com.oasys.controller.Gestor;
 import com.oasys.entity.UtilLog;
 import com.oasys.publico.Establecimiento;
 import com.oasys.publico.dao.EstablecimientoDAO;
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author Julian
  */
-public class GestorEstablecimiento extends Gestor {
+public class GestorEstablecimiento extends Gestor implements Serializable {
 
     public GestorEstablecimiento() throws Exception {
         super();
